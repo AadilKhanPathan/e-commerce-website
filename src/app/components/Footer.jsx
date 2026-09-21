@@ -16,9 +16,9 @@ export default function Footer() {
                 <span className="text-red-600">.</span>
               </h2>
 
-              <p className="mt-4 max-w-xs text-sm leading-6 text-zinc-400">
+              {/* <p className="mt-4 max-w-xs text-sm leading-6 text-zinc-400">
                 Timeless watches designed to match your style. Discover quality, precision, and elegance in every detail.
-              </p>
+              </p> */}
             </div>
 
             {/* <!-- Shop --> */}
