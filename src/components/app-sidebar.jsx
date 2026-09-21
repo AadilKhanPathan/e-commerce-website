@@ -20,8 +20,8 @@ import { UserPen, ChartBarStacked  } from "lucide-react"
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "Aadil",
+    email: "Aadil@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
   teams: [
