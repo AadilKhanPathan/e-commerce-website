@@ -62,7 +62,7 @@ const data = {
       items: [
         {
           title: "Add Item",
-          url: "/additem",
+          url: "#",
         },
         {
           title: "List Items",
