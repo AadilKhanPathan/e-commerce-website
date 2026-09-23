@@ -27,7 +27,7 @@ export default async function BestCollections() {
   if (data.length === 0) return null;  
 
   return (
-    <section className="mt-12 p-3">
+    <section id="collection" className="mt-12 p-3">
       <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
        New Arrival
       </h2>
