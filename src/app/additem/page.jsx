@@ -7,7 +7,7 @@ export default function Page() {
     name: "",
     description: "",
     brand: "",
-    gender: "",
+    category: "",
     price: "",
     discountedPrice: "",
     images: [],
@@ -43,50 +43,50 @@ export default function Page() {
   const register = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const formData = new FormData();
+    try {
+      const formData = new FormData();
 
-    //   formData.append("name", product.name);
-    //   formData.append("description", product.description);
-    //   formData.append("brand", product.brand);
-    //   formData.append("gender", product.gender);
-    //   formData.append("price", product.price);
-    //   formData.append("discountedPrice", product.discountedPrice);
-    //   formData.append("color", product.color);
-    //   formData.append("material", product.material);
+      formData.append("name", product.name);
+      formData.append("description", product.description);
+      formData.append("brand", product.brand);
+      formData.append("category", product.category);
+      formData.append("price", product.price);
+      formData.append("discountedPrice", product.discountedPrice);
+      formData.append("color", product.color);
+      formData.append("material", product.material);
 
-    //   if (product.type) {
-    //     formData.append("type", product.type);
-    //   }
+      if (product.type) {
+        formData.append("type", product.type);
+      }
 
-    //   if (product.movement) {
-    //     formData.append("movement", product.movement);
-    //   }
+      if (product.movement) {
+        formData.append("movement", product.movement);
+      }
 
-    //   if (product.strapType) {
-    //     formData.append("strapType", product.strapType);
-    //   }
+      if (product.strapType) {
+        formData.append("strapType", product.strapType);
+      }
 
-    //   formData.append("waterResistance", product.waterResistance);
-    //   formData.append("warranty", product.warranty);
-    //   formData.append("isFeatured", product.isFeatured);
-    //   formData.append("isAvailable", product.isAvailable);
+      formData.append("waterResistance", product.waterResistance);
+      formData.append("warranty", product.warranty);
+      formData.append("isFeatured", product.isFeatured);
+      formData.append("isAvailable", product.isAvailable);
 
-    //   product.images.forEach((image) => {
-    //     formData.append("images", image);
-    //   });
+      product.images.forEach((image) => {
+        formData.append("images", image);
+      });
 
-    //   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_LOCAL_PORT}/api/admin/add`, {
-    //     method: "POST",
-    //     body: formData,
-    //   });
+      const res = await fetch(`https://e-commerce-backend-4l6u.onrender.com/api/admin/add`, {
+        method: "POST",
+        body: formData,
+      });
 
-    //   const data = await res.json();
+      const data = await res.json();
 
-    //   console.log(data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -150,26 +150,26 @@ export default function Page() {
               />
             </div>
 
-            {/* // Gender  */}
+            {/* // category  */}
             <div className="space-y-2">
               <label
-                htmlFor="gender"
+                htmlFor="category"
                 className="text-sm font-medium text-zinc-700"
               >
-                Gender
+                category
               </label>
               <select
-                id="gender"
-                name="gender"
-                value={product.gender}
+                id="category"
+                name="category"
+                value={product.category}
                 onChange={handleChange}
                 required
                 className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm outline-none focus:border-black focus:ring-2 focus:ring-zinc-200"
               >
-                <option value="">Select gender</option>
+                <option value="">Select category</option>
                 <option value="Men">Men</option>
                 <option value="Women">Women</option>
-                <option value="Unisex">Unisex</option>
+                <option value="Kids">Kids</option>
               </select>
             </div>
 
@@ -191,7 +191,7 @@ export default function Page() {
                 <option value="">Select type</option>
                 <option value="Wrist Watch">Wrist Watch</option>
                 <option value="Wall Clock">Wall Clock</option>
-                <option value="Alarm">Alarm</option>
+                <option value="Alarm">Alarm Clock</option>
               </select>
             </div>
           </div>

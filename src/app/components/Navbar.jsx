@@ -1,34 +1,7 @@
 
 import Link from "next/link";
-import Image from "next/image";
 
-// NAVIGATION IMPORTS
-
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "../../components/ui/navigation-menu";
-
-import { Button } from "../../components/ui/button";
-
-// SHEET
-
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "../../components/ui/sheet";
-
-import { Menu, ShoppingCart , Search } from "lucide-react";
+import { ShoppingCart , Search } from "lucide-react";
 
 function Navbar() {
   const navItems = [
@@ -42,7 +15,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="sticky top-0 w-full border-b font-semibold tracking-tight">
+    <div className="sticky top-0 w-full border-b font-semibold tracking-tight ">
       <header className="text-3xl flex h-20 items-center justify-between px-4">
         {/* LOGO */}
 

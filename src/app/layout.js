@@ -1,6 +1,6 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Quantico } from "next/font/google";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip"
+
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   SidebarInset,
@@ -11,14 +11,10 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const quantico = Quantico({
+  variable: "--font-quantico",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "700"], 
 });
 
 export const metadata = {
@@ -32,11 +28,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${quantico.className}`}>
         {/* <TooltipProvider>{children}</TooltipProvider> */}
         <SidebarProvider>
       <SidebarInset>
-        <header className="flex h-16 items-center  px-4">
+        <header className="flex h-16 items-center bg-transparent px-4">
           <Navbar/>
           <SidebarTrigger className="ml-auto rotate-180" />
         </header>
