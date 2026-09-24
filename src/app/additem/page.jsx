@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import { LoaderCircle } from "lucide-react";
 
 export default function Page() {
+  const [loading, setLoading] = useState(false);
   const [product, setProduct] = useState({
     name: "",
     description: "",
@@ -44,6 +46,7 @@ export default function Page() {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const formData = new FormData();
 
       formData.append("name", product.name);
@@ -86,6 +89,8 @@ export default function Page() {
       console.log(data);
     } catch (error) {
       console.log(error);
+    } finally{
+      setLoading(false);
     }
   };
 
@@ -492,13 +497,28 @@ export default function Page() {
           >
             Cancel
           </button>
+          
 
-          <button
-            type="submit"
-            className="rounded-lg bg-black px-6 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 cursor-pointer"
-          >
-            Add Product
-          </button>
+          {
+  loading ? (
+    <button
+      type="submit"
+      disabled
+      className="flex items-center justify-center gap-2 rounded-lg bg-zinc-900 px-6 py-2.5 text-sm font-medium text-white transition cursor-not-allowed opacity-80"
+    >
+      <LoaderCircle className="h-4 w-4 animate-spin" />
+      Adding Product...
+    </button>
+  ) : (
+    <button
+      type="submit"
+      className="flex items-center justify-center gap-2 rounded-lg bg-black px-6 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 cursor-pointer"
+    >
+      Add Product
+    </button>
+  )
+}
+          
         </div>
       </form>
     </div>
