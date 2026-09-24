@@ -30,7 +30,7 @@ export default async function page({ params }) {
             width={260}
             height={390}
             alt="Regalia Opulent LII Quartz Multifunction Watch"
-            className="p-4 rounded-lg border border-neutral-200 shadow-2xl shadow-black/40 ring-1 ring-black/5"
+            className="p-4 rounded border-2 border-zinc-500 ring-1 ring-black/5"
           />
         </div>
 

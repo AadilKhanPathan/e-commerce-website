@@ -27,6 +27,11 @@ export default function Hero() {
 
         {/* Content */}
         <div className="absolute bottom-34 left-8 md:left-16 z-10 max-w-xl">
+          {!session || 
+          <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-6 leading-tight">
+            Welcome, {session?.user.name}
+          </h1>
+          }
           <p className="text-sm font-semibold tracking-wide text-gray-200 mb-2">
             Luxury Watch Brands
           </p>
