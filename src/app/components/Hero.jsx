@@ -3,7 +3,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { PlusIcon, UserRoundArrowLeft } from "lucide-react";
+import {  UserRoundArrowLeft } from "lucide-react";
 
 export default function Hero() {
   const { data: session, status } = useSession();
@@ -29,7 +29,7 @@ export default function Hero() {
         <div className="absolute bottom-34 left-8 md:left-16 z-10 max-w-xl">
           {!session || 
           <h1 className="text-2xl md:text-4xl font-extrabold text-white mb-6 leading-tight">
-            Welcome, {session?.user.name}
+            Hi, {session?.user.name}
           </h1>
           }
           <p className="text-sm font-semibold tracking-wide text-gray-200 mb-2">

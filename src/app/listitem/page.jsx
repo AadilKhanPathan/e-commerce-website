@@ -1,82 +1,100 @@
-import React from 'react'
+import React from "react";
 
-export default function page() {
+export default async function page() {
+
+  async function getlist() {
+   try {
+    const res = await fetch(
+      `https://e-commerce-backend-4l6u.onrender.com/api/admin/list`,
+    );
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch collections: ${res.status}`);
+    }
+
+    const data = await res.json();
+    // console.log(data)
+    return data.list ?? [];
+  } catch (error) {
+    console.error("getData error:", error);
+    return [];
+  }
+  }
+  const data = await getlist();
+  console.log(data)
+
   return (
-    <div className='mx-4 mt-4'>
+    <div className="mx-4 mt-4">
       <div className="w-full overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
-  <table className="w-full min-w-[500px] text-left text-sm">
-    
-    {/* <!-- Table Header --> */}
-    <thead className="border-b border-gray-200 bg-gray-50">
-      <tr>
-        <th className="px-6 py-4 font-semibold text-gray-700">
-          Product Name
-        </th>
+        
+        
+        <table  className="w-full min-w-[500px] text-left text-sm">
+          {/* <!-- Table Header --> */}
+          <thead className="border-b border-gray-200 bg-gray-50">
+            <tr>
+              <th className="px-6 py-4 font-semibold text-gray-700">
+                Products Name
+              </th>
 
-        <th className="px-6 py-4 font-semibold text-gray-700">
-          Price
-        </th>
+              <th className="px-6 py-4 font-semibold text-gray-700">Price</th>
 
-        <th className="px-6 py-4 font-semibold text-gray-700">
-          In Stock
-        </th>
-      </tr>
-    </thead>
+              <th className="px-6 py-4 font-semibold text-gray-700">
+                In Stock
+              </th>
+            </tr>
+          </thead>
 
-    {/* <!-- Table Body --> */}
-    <tbody className="divide-y divide-gray-100">
-      
-      <tr className="transition hover:bg-gray-50">
-        <td className="px-6 py-4 font-medium text-gray-900">
-          classNameic Watch
-        </td>
+         <tbody className="divide-y divide-zinc-100">
+  {data.map((d) => (
+    <tr
+      key={d._id}
+      className="group transition-colors hover:bg-zinc-50"
+    >
+      {/* Product Name */}
+      <td className="px-6 py-4">
+        <span className="font-medium text-zinc-900">
+          {d.name}
+        </span>
+      </td>
 
-        <td className="px-6 py-4 text-gray-600">
-          ₹2,499
-        </td>
+      {/* Price */}
+      <td className="px-6 py-4">
+        <span className="font-semibold text-zinc-900">
+          ₹{d.price}
+        </span>
+      </td>
 
-        <td className="px-6 py-4">
-          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
-            In Stock
-          </span>
-        </td>
-      </tr>
+      {/* Stock Status */}
+      <td className="px-6 py-4">
+        <span
+          className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium ring-1 ring-inset ${
+            d.isAvailable === "In Stock"
+              ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
+              : d.isAvailable === "Out of Stock"
+              ? "bg-red-50 text-red-700 ring-red-200"
+              : "bg-amber-50 text-amber-700 ring-amber-200"
+          }`}
+        >
+          <span
+            className={`h-1.5 w-1.5 rounded-full ${
+              d.isAvailable === "In Stock"
+                ? "bg-emerald-500"
+                : d.isAvailable === "Out of Stock"
+                ? "bg-red-500"
+                : "bg-amber-500"
+            }`}
+          />
 
-      <tr className="transition hover:bg-gray-50">
-        <td className="px-6 py-4 font-medium text-gray-900">
-          Smart Watch Pro
-        </td>
-
-        <td className="px-6 py-4 text-gray-600">
-          ₹4,999
-        </td>
-
-        <td className="px-6 py-4">
-          <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
-            In Stock
-          </span>
-        </td>
-      </tr>
-
-      <tr className="transition hover:bg-gray-50">
-        <td className="px-6 py-4 font-medium text-gray-900">
-          Leather Wall Clock
-        </td>
-
-        <td className="px-6 py-4 text-gray-600">
-          ₹1,899
-        </td>
-
-        <td className="px-6 py-4">
-          <span className="rounded-full bg-red-100 px-3 py-1 text-xs font-medium text-red-700">
-            Out of Stock
-          </span>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-</div>
+          {d.isAvailable}
+        </span>
+      </td>
+    </tr>
+  ))}
+</tbody>
+        
+          
+        </table>
+      </div>
     </div>
-  )
+  );
 }

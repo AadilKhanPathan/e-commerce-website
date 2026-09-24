@@ -2,8 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-async function getData() {
+async function getData(category) {
   try {
+    console.log(category)
     const res = await fetch(
       `https://e-commerce-backend-4l6u.onrender.com/api/admin/list`,
     //   { next: { revalidate: 60 } } // cache for 60s, adjust as needed
@@ -14,6 +15,9 @@ async function getData() {
     }
 
     const data = await res.json();
+    console.log(data)
+    const FilteredData = data.filter({category = category})
+
     return data.list ?? [];
   } catch (error) {
     console.error("getData error:", error);
@@ -21,8 +25,8 @@ async function getData() {
   }
 }
 
-export default async function BestCollections() {
-  const data = await getData(); /* data has name, brand, gender, product type, description, price, discounted price, product images, color, material, movement, water resistance, warranty, availability  */
+export default async function BestCollections({category = "Men"}) {
+  const data = await getData(category); /* data has name, brand, gender, product type, description, price, discounted price, product images, color, material, movement, water resistance, warranty, availability  */
 
   if (data.length === 0) return null;  
 
@@ -66,14 +70,23 @@ export default async function BestCollections() {
 
                 {/* Tags / Specs */}
                 <div className="mt-3 flex flex-wrap gap-1.5">
-                  {(item.specs || ["Analog", "Metal", "50m"]).map((spec, i) => (
+                  {/* {(item.specs || ["Analog", "Metal", "50m"]).map((spec, i) => ( */}
                     <span
-                      key={i}
                       className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
                     >
-                      {spec}
+                      {item.movement || "analog"}
                     </span>
-                  ))}
+                    <span
+                      className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
+                    >
+                      {item.strapType || "metal"}
+                    </span>
+                    <span
+                      className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
+                    >
+                      {item.warranty || "No warranty"}
+                    </span>
+                  {/* ))} */}
                 </div>
 
                 {/* Price & Stock */}
