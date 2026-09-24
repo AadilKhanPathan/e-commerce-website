@@ -1,7 +1,13 @@
+"use client";
+
+import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { PlusIcon, UserRoundArrowLeft } from "lucide-react";
 
 export default function Hero() {
+  const { data: session, status } = useSession();
+  console.log(session);
   return (
     <div className="w-full">
       <div className="relative w-full h-[45vh] min-h-[500px]">
@@ -29,13 +35,21 @@ export default function Hero() {
           </h1>
 
           <div className="flex gap-3">
-            <Link href="#collection" className="flex items-center gap-2 bg-white text-black font-semibold px-6 py-2 rounded-2xl hover:bg-white/80 transition">
+            <Link
+              href="#collection"
+              className="flex items-center gap-2 bg-white text-black font-semibold px-6 py-2 rounded-2xl hover:bg-white/80 transition"
+            >
               Explore Collection
             </Link>
-            {/* <button className="flex items-center gap-2 bg-gray-500/40 text-white font-semibold px-6 py-2 rounded hover:bg-gray-500/60 transition">
-                    <PlusIcon className="w-5 h-5" />
-                    Add to list
-                  </button> */}
+            {status === "loading" ? (<button className="flex items-center gap-2 bg-gray-500/40 text-white font-semibold px-6 py-2 rounded hover:bg-gray-500/60 transition">Loading...</button>) : !session ?
+            (<button
+              onClick={() => signIn("google", { callbackUrl: "/" })}
+              className="flex items-center gap-2 bg-gray-500/40 text-white font-semibold px-6 py-2 rounded hover:bg-gray-500/60 transition"
+            >
+              <UserRoundArrowLeft className="w-5 h-5" />
+              Sign In
+            </button>) : (<button onClick={() => signOut("google", {callbackUrl:"/"})} className="flex items-center gap-2 bg-gray-500/40 text-white font-semibold px-6 py-2 rounded hover:bg-gray-500/60 transition" >sign out</button>) }
+            
           </div>
         </div>
       </div>

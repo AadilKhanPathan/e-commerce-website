@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useSession } from "next-auth/react"
 import { NavMain } from "@/components/nav-main"
 import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
@@ -66,7 +67,7 @@ const data = {
         },
         {
           title: "List Items",
-          url: "#",
+          url: "/listitem",
         },
         {
           title: "Customers",
@@ -179,11 +180,13 @@ const data = {
 
 export function AppSidebar({
   ...props
-}) {
+})  {
+   const { data: session, status } = useSession();
+   console.log(session)
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
