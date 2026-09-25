@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ShoppingCart, Search } from "lucide-react";
+import {  Search, Bell } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 function Navbar() {
   const [search, setSearch] = useState();
@@ -16,6 +17,7 @@ function Navbar() {
           T<span className="text-red-600">i</span>tan
           <span className="text-red-400">.</span>
         </Link>
+        {/* <Image src={"/animatedicon.avif"} width={53} height={43} alt="" /> */}
 
         <ul className="w-full hidden md:flex items-center justify-center gap-8 text-sm text-white font-light">
           <li className="text-black hover:border-b-2 hover:border-black cursor-pointer">
@@ -57,7 +59,7 @@ function Navbar() {
           />
         )}
 
-          <ShoppingCart />
+         <Bell />
         </div>
       </header>
     </div>

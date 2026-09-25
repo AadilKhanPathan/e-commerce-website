@@ -4,19 +4,18 @@ import Link from "next/link";
 
 async function getData(category) {
   try {
-    console.log(category)
+    console.log(category);
     const res = await fetch(
       `https://e-commerce-backend-4l6u.onrender.com/api/user/category/${category}`,
-    //   { next: { revalidate: 60 } } // cache for 60s, adjust as needed
+      //   { next: { revalidate: 60 } } // cache for 60s, adjust as needed
     );
 
     if (!res.ok) {
       throw new Error(`Failed to fetch collections: ${res.status}`);
-      
     }
 
     const data = await res.json();
-    console.log(data)
+    console.log(data);
 
     return data.data ?? [];
   } catch (error) {
@@ -26,16 +25,17 @@ async function getData(category) {
 }
 
 export default async function BestCollections({ category = "Men" }) {
- 
   const data = await getData(category);
   // console.log(data); /* data has name, brand, gender, product type, description, price, discounted price, product images, color, material, movement, water resistance, warranty, availability  */
 
-  if (data.length === 0) return null;  
+  if (data.length === 0) return null;
 
   return (
     <section id="collection" className="mt-12 p-3">
       <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
-       {category=="Men" ? "Men's Collection": "New Arrival"}
+        {category == "Recommendations"
+          ? "Recommendations for you"
+          : category + "'s collection"}
       </h2>
 
       <div className="grid grid-cols-2 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
@@ -71,25 +71,17 @@ export default async function BestCollections({ category = "Men" }) {
                 </h3>
 
                 {/* Tags / Specs */}
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {/* {(item.specs || ["Analog", "Metal", "50m"]).map((spec, i) => ( */}
-                    <span
-                      className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
-                    >
-                      {item.movement || "analog"}
-                    </span>
-                    <span
-                      className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
-                    >
-                      {item.strapType || "metal"}
-                    </span>
-                    <span
-                      className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300"
-                    >
-                      {item.warranty || "No warranty"}
-                    </span>
-                  {/* ))} */}
-                </div>
+                {/* <div className="mt-3 flex flex-wrap gap-1.5">
+                  <span className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+                    {item.movement || "analog"}
+                  </span>
+                  <span className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+                    {item.strapType || "metal"}
+                  </span>
+                  <span className="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+                    {item.warranty || "No warranty"}
+                  </span>
+                </div> */}
 
                 {/* Price & Stock */}
                 <div className="mt-4 flex items-baseline justify-between">
@@ -103,7 +95,7 @@ export default async function BestCollections({ category = "Men" }) {
                       </span>
                     )}
                   </div>
-                  
+
                   <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     In Stock
