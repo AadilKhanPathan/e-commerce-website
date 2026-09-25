@@ -10,6 +10,33 @@ export default function Hero() {
   console.log(session);
   return (
     <div className="w-full">
+      <ul className="flex md:hidden items-center py-3 border-3 justify-center gap-5 text-sm text-white font-light">
+
+          <li className="text-black hover:border-b-2 hover:border-black cursor-pointer">
+            <Link  href="/?category=Men#collection">
+              Men
+            </Link>
+          </li>
+
+          <li className="text-black hover:border-b-2 hover:border-black cursor-pointer">
+            <Link href="/?category=Women#collection">
+              Women
+            </Link>
+          </li>
+
+          <li className="text-black hover:border-b-2 hover:border-black cursor-pointer">
+            <Link href="/?category=Kids#collection">
+              Kids
+            </Link>
+          </li>
+
+          <li className="text-black hover:border-b-2 hover:border-black cursor-pointer">
+            <Link href="/?category=Recommendations#collection">
+              Recommendations
+            </Link>
+          </li>
+
+        </ul>
       <div className="relative w-full h-[45vh] min-h-[500px]">
         {/* Background image */}
 

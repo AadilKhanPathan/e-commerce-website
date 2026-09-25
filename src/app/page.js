@@ -10,7 +10,8 @@ export  default async function Home({searchParams}) {
   return (
     <div>
       <Hero/>
-      <Card category={category}/>
+      {/* <Card category={category}/> */}
+    
     </div>
   );
 }
