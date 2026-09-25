@@ -38,9 +38,9 @@ function Navbar() {
         </ul>
 
         <div className="flex gap-3 mr-2.5">
-          {true ? (
+          {search ? (
           <Input
-          className={`transition-all duration-300 ease-in-out overflow-hidden rounded-none ${open ? "w-50 opacity-100 px-2 border-b border-solid border-white " : "w-0 opacity-0 px-0 border-none"}`}
+          className={`transition-all duration-300 ease-in-out overflow-hidden rounded-none ${search ? "w-50 opacity-100 px-2 border-b border-solid border-white " : "w-0 opacity-0 px-0 border-none"}`}
             type="text"
             placeholder="Search your movie"
             autoFocus
