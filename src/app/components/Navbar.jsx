@@ -40,9 +40,9 @@ function Navbar() {
         <div className="flex gap-3 mr-2.5">
           {search ? (
           <Input
-          className={`transition-all duration-300 ease-in-out overflow-hidden rounded-none ${search ? "w-50 opacity-100 px-2 border-b border-solid border-white " : "w-0 opacity-0 px-0 border-none"}`}
+          className={`transition-all duration-300 ease-in-out border outline-none overflow-hidden rounded-none placeholder:text-black ${search ? "w-50 opacity-100 px-2 border-b border-solid border-white  " : "w-0 opacity-0 px-0 border-none"}`}
             type="text"
-            placeholder="Search your movie"
+            placeholder="Search Watches..."
             autoFocus
             onBlur={() => setSearch(false)}
           />

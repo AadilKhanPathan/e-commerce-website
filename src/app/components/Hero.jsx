@@ -3,7 +3,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import {  UserRoundArrowLeft } from "lucide-react";
+import {  AlarmClock, Clock, UserRoundArrowLeft, Watch } from "lucide-react";
 
 export default function Hero() {
   const { data: session, status } = useSession();
@@ -84,6 +84,33 @@ export default function Hero() {
             
           </div>
         </div>
+        {/* Clock Types Navigation */}
+        <ul className="absolute flex w-full bottom-0 text-white  items-center px-3 py-3  justify-center gap-5 text-sm text-white font-light">
+
+          <li className=" flex flex-col items-center hover:border-black cursor-pointer border-2 p-2 rounded"> 
+            <Watch />
+            <Link  href="#collection">
+              Wrist Watches
+            </Link>
+           
+
+          </li>
+
+          <li className=" hover:border-b-2 hover:border-black cursor-pointer flex flex-col items-center border-1 border-2 py-2 px-1 rounded">
+            <Clock />
+            <Link href="#collection">
+              Wall Clocks
+            </Link>
+          </li>
+
+          <li className=" hover:border-b-2 hover:border-black cursor-pointer flex flex-col items-center border-1 border-2 p-2 rounded">
+            <AlarmClock />
+            <Link href="#collection">
+              Alarm Clocks
+            </Link>
+          </li>
+
+        </ul>
       </div>
     </div>
   );
