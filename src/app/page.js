@@ -3,11 +3,14 @@ import Card from "./components/Card";
 import Hero from "./components/Hero";
 
 
-export default function Home() {
+export  default async function Home({searchParams}) {
+  const params = await searchParams;
+
+  const category = params.category || "Men";
   return (
     <div>
       <Hero/>
-      <Card />
+      <Card category={category}/>
     </div>
   );
 }

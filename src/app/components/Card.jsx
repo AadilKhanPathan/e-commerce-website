@@ -6,34 +6,36 @@ async function getData(category) {
   try {
     console.log(category)
     const res = await fetch(
-      `https://e-commerce-backend-4l6u.onrender.com/api/admin/list`,
+      `https://e-commerce-backend-4l6u.onrender.com/api/user/category/${category}`,
     //   { next: { revalidate: 60 } } // cache for 60s, adjust as needed
     );
 
     if (!res.ok) {
       throw new Error(`Failed to fetch collections: ${res.status}`);
+      
     }
 
     const data = await res.json();
     console.log(data)
-    const FilteredData = data.filter({category = category})
 
-    return data.list ?? [];
+    return data.data ?? [];
   } catch (error) {
     console.error("getData error:", error);
     return [];
   }
 }
 
-export default async function BestCollections({category = "Men"}) {
-  const data = await getData(category); /* data has name, brand, gender, product type, description, price, discounted price, product images, color, material, movement, water resistance, warranty, availability  */
+export default async function BestCollections({ category = "Men" }) {
+ 
+  const data = await getData(category);
+  // console.log(data); /* data has name, brand, gender, product type, description, price, discounted price, product images, color, material, movement, water resistance, warranty, availability  */
 
   if (data.length === 0) return null;  
 
   return (
     <section id="collection" className="mt-12 p-3">
       <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
-       New Arrival
+       {category=="Men" ? "Men's Collection": "New Arrival"}
       </h2>
 
       <div className="grid grid-cols-2 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
