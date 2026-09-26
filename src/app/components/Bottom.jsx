@@ -142,7 +142,7 @@ export default function Bottom() {
           
           {session ? 
           // user is logged in
-          <DropdownMenuContent className="w-1xl">
+          <DropdownMenuContent className="w-1xl rounded-xl">
             <DropdownMenuGroup>
               <DropdownMenuItem className={"flex items-center gap-4"}>
                 
@@ -174,7 +174,7 @@ export default function Bottom() {
           : 
 
           // USer is not logged in
-          <DropdownMenuContent className="w-1xl text-3xl">
+          <DropdownMenuContent className="w-1xl text-3xl rounded-xl">
             <DropdownMenuGroup>
               <DropdownMenuItem className={"flex items-center gap-4"}>
                 
