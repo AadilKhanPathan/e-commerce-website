@@ -80,7 +80,7 @@ export default function Hero() {
             >
               <UserRoundArrowLeft className="w-5 h-5" />
               Sign In
-            </button>) : (<button onClick={() => signOut("google", {callbackUrl:"/"})} className="flex items-center gap-2 bg-gray-500/40 text-white font-semibold px-6 py-2 rounded hover:bg-gray-500/60 transition" >sign out</button>) }
+            </button>) : (<button className="flex items-center gap-2 bg-gray-500/40 text-white font-semibold px-6 py-2 rounded hover:bg-gray-500/60 transition" >View New Arrival</button>) }
             
           </div>
         </div>

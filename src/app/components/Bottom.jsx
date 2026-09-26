@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut, signIn } from "next-auth/react";
 import Link from "next/link";
 import {
   Heart,
@@ -58,7 +58,7 @@ export default function Bottom() {
         </li>
 
         {/* CATEGORY SWIPE HANDLE */}
-        <Drawer showSwipeHandle open={open} onOpenChange={setOpen}>
+        <Drawer showSwipeHandle open={open} onOpenChange={setOpen} >
           <DrawerTrigger
             render={
               <button className="text-black hover:border-b-2 hover:border-black cursor-pointer flex flex-col items-center ">
@@ -67,8 +67,8 @@ export default function Bottom() {
               </button>
             }
           />
-          <DrawerContent>
-            <DrawerHeader>
+          <DrawerContent className="bg-white/60 ">
+            <DrawerHeader >
               <DrawerTitle>Categories</DrawerTitle>
               <DrawerDescription>Select your category</DrawerDescription>
             </DrawerHeader>
@@ -167,7 +167,7 @@ export default function Bottom() {
             </DropdownMenuGroup>
           
             <DropdownMenuSeparator />
-            <DropdownMenuItem className={"text-red-600 text-sm"}><LogOut />Log out</DropdownMenuItem>
+            <DropdownMenuItem className={"text-red-600 text-sm"}><LogOut /><button onClick={() => signOut("google", {callbackUrl:"/"})}>Log Out</button></DropdownMenuItem>
            
           </DropdownMenuContent>
           
@@ -188,7 +188,7 @@ export default function Bottom() {
                   <AvatarFallback><User/></AvatarFallback>
                 </Avatar>
                 <div>
-                <button>Sign in</button>
+                <button onClick={() => signIn("google", {callbackUrl:"/"})}>Sign in</button>
                 </div>
               </DropdownMenuItem>
             <DropdownMenuSeparator />
