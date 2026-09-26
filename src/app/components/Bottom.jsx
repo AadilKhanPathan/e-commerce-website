@@ -161,20 +161,20 @@ export default function Bottom() {
               </DropdownMenuItem>
             <DropdownMenuSeparator />
 
-              <DropdownMenuItem><Package />My Orders</DropdownMenuItem>
-              <DropdownMenuItem><MapPinHouse />Addresses</DropdownMenuItem>
-              <DropdownMenuItem><Settings />Settings</DropdownMenuItem>
+              <DropdownMenuItem className={"h-10 text-sm"}><Package />My Orders</DropdownMenuItem>
+              <DropdownMenuItem className={"h-10 text-sm"}><MapPinHouse />Addresses</DropdownMenuItem>
+              <DropdownMenuItem className={"h-10 text-sm"}><Settings />Settings</DropdownMenuItem>
             </DropdownMenuGroup>
           
             <DropdownMenuSeparator />
-            <DropdownMenuItem className={"text-red-600"}><LogOut />Log out</DropdownMenuItem>
+            <DropdownMenuItem className={"text-red-600 text-sm"}><LogOut />Log out</DropdownMenuItem>
            
           </DropdownMenuContent>
           
           : 
 
           // USer is not logged in
-          <DropdownMenuContent className="w-1xl">
+          <DropdownMenuContent className="w-1xl text-3xl">
             <DropdownMenuGroup>
               <DropdownMenuItem className={"flex items-center gap-4"}>
                 
@@ -193,8 +193,8 @@ export default function Bottom() {
               </DropdownMenuItem>
             <DropdownMenuSeparator />
 
-              <DropdownMenuItem><Settings />Settings</DropdownMenuItem>
-              <DropdownMenuItem><MessageCircleQuestionMark />Help & Support</DropdownMenuItem>
+              <DropdownMenuItem className={"text-sm"}><Settings />Settings</DropdownMenuItem>
+              <DropdownMenuItem className={"text-sm"}><MessageCircleQuestionMark />Help & Support</DropdownMenuItem>
             </DropdownMenuGroup>
             
           </DropdownMenuContent>}
